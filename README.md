@@ -70,8 +70,8 @@ check for division by zero, so `x/x` becomes `1`. It does not expand or factor.
 ## Tests
 
 ```
-npm install
-npm test
+pnpm install
+pnpm test
 ```
 
 Besides unit tests, a property test compares the derivative of a few thousand random
