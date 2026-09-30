@@ -1,0 +1,17 @@
+{
+  "name": "deriv",
+  "version": "0.1.0",
+  "description": "Symbolic differentiation that shows its work, one rule at a time.",
+  "type": "module",
+  "private": true,
+  "main": "src/index.ts",
+  "license": "MIT",
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.0",
+    "vitest": "^2.1.0"
+  }
+}
