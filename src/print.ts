@@ -105,7 +105,7 @@ function mulSeparator(l: Expr, r: Expr, left: string, right: string, tex: boolea
   const startsWithDigit = /^[0-9.]/.test(right);
   if (!tex) {
     // `2x` and `3sin(x)` read like the textbook; everything else gets an explicit sign.
-    const implicit = l.kind === 'num' && l.value >= 0 && /^[A-Za-z(]/.test(right);
+    const implicit = l.kind === 'num' && l.value >= 0 && r.kind !== 'deriv' && /^[A-Za-z(]/.test(right);
     return implicit ? '' : '*';
   }
   const dot = '\\cdot ';

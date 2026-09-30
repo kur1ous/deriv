@@ -3,3 +3,6 @@ export * from './errors';
 export * from './tokenizer';
 export * from './parser';
 export * from './print';
+export * from './rules';
+export * from './eval';
+export * from './diff';
