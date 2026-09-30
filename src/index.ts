@@ -6,3 +6,4 @@ export * from './print';
 export * from './rules';
 export * from './eval';
 export * from './diff';
+export * from './simplify';
