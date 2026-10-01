@@ -49,6 +49,13 @@ for (const step of solution.differentiation.steps) {
 
 The pieces are also usable on their own: `parse`, `differentiate`, `simplify`, `evaluate`,
 `toText`, `toLatex`. Bad input throws a `ParseError` carrying the offset of the offending token.
+`formatParseError(err)` returns its message and source with a caret under the offending span:
+
+```text
+sin needs parentheses, e.g. sin(x)
+2sin x
+ ^~~
+```
 
 ## Input
 
