@@ -49,6 +49,9 @@ class Parser {
         const [lbp, rbp] = infixBp(t.op);
         if (lbp <= minBp) break;
         this.next();
+        if (t.op === '^' && (this.peek().type === 'eof' || this.peek().type === 'rparen')) {
+          throw new ParseError("missing exponent after '^'; add an expression, e.g. ^2", this.src, t.pos, t.end);
+        }
         const right = this.expr(rbp);
         left = build(t.op, left, right);
       } else if (t.type === 'var' || t.type === 'const' || t.type === 'fn' || t.type === 'lparen') {
@@ -56,8 +59,9 @@ class Parser {
         left = mul(left, this.expr(BP.mul));
       } else if (t.type === 'num') {
         // `2 3` or `x2`: ambiguous between a product and a power, so refuse to guess.
+        const example = this.src.slice(0, t.pos) + '*' + this.src.slice(t.pos);
         throw new ParseError(
-          `unexpected number ${t.value}; put an operator before it (for example * or ^)`,
+          `unexpected number ${t.value}; put an operator before it, e.g. ${JSON.stringify(example)}`,
           this.src, t.pos, t.end,
         );
       } else {
